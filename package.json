@@ -1,0 +1,23 @@
+{
+  "name": "clicktrap-dark-pattern-detector",
+  "version": "1.0.0",
+  "description": "ClickTrap – Professional Cybersecurity Browser Extension and Companion Dashboard for Detecting Deceptive UI Designs",
+  "main": "detector.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test/detector.test.js",
+    "evaluate": "node test/evaluate.js",
+    "generate-icons": "node scripts/generate-icons.js"
+  },
+  "keywords": [
+    "cybersecurity",
+    "dark-patterns",
+    "chrome-extension",
+    "deceptive-design",
+    "privacy",
+    "browser-security"
+  ],
+  "author": "ClickTrap Research Team",
+  "license": "MIT"
+}

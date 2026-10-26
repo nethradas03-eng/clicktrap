@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClickTrap – Dark Pattern Detector & Web Scanner</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="icon" type="image/png" href="../icons/icon32.png">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <img src="../icons/icon32.png" alt="ClickTrap Shield" class="brand-logo" />
+        <div class="brand-meta">
+          <span class="brand-title">ClickTrap</span>
+          <span class="brand-sub">Dark Pattern Detector</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <button class="nav-item active" data-page="scanner">
+          <span class="nav-icon">🔍</span>
+          <span class="nav-text">Scan Website</span>
+        </button>
+
+        <button class="nav-item" data-page="overview">
+          <span class="nav-icon">📊</span>
+          <span class="nav-text">Overview</span>
+        </button>
+
+        <button class="nav-item" data-page="report" id="nav-report-btn">
+          <span class="nav-icon">📋</span>
+          <span class="nav-text">Scan Report</span>
+        </button>
+
+        <button class="nav-item" data-page="history">
+          <span class="nav-icon">🕒</span>
+          <span class="nav-text">Scan History</span>
+        </button>
+
+        <button class="nav-item" data-page="learn">
+          <span class="nav-icon">📚</span>
+          <span class="nav-text">Learn Patterns</span>
+        </button>
+
+        <button class="nav-item" data-page="settings">
+          <span class="nav-icon">⚙️</span>
+          <span class="nav-text">Settings</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="../test-pages/index.html" class="test-fixtures-link" target="_blank">
+          <span>🧪</span> Open Test Pages
+        </a>
+        <div class="engine-version">ClickTrap v1.0.0 &bull; Local-First</div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="content-stage">
+      <!-- Top Navigation Bar -->
+      <header class="top-nav">
+        <div class="top-left">
+          <h1 id="page-title" class="page-heading">Scan Any Website</h1>
+          <p id="page-sub" class="page-subheading">Enter any website URL or paste HTML to detect manipulative UI designs.</p>
+        </div>
+        <div class="top-right">
+          <button id="btn-quick-scan-guide" class="btn btn-secondary btn-sm">
+            <span>ℹ️</span> How It Works
+          </button>
+        </div>
+      </header>
+
+      <!-- Page 1: SCAN WEBSITE (NEW DIRECT SCANNER PAGE) -->
+      <section id="page-scanner" class="view-panel active">
+        <!-- Live URL Scanner Box -->
+        <div class="card scanner-hero-card">
+          <div class="scanner-hero-content">
+            <span class="hero-tag">Direct Website Scanner</span>
+            <h2>Check Any Webpage for Dark Patterns</h2>
+            <p>Enter a web address below. ClickTrap fetches and inspects the webpage elements for fake countdown timers, hidden fees, scarce stock claims, and guilt opt-outs.</p>
+
+            <form id="url-scan-form" class="url-input-group">
+              <div class="url-input-wrapper">
+                <span class="url-protocol-prefix">🌐</span>
+                <input 
+                  type="text" 
+                  id="target-url-input" 
+                  class="url-input-field" 
+                  placeholder="Enter website URL (e.g. https://store.example.com or paste URL)" 
+                  required 
+                />
+              </div>
+              <button type="submit" id="btn-submit-url-scan" class="btn btn-primary btn-lg">
+                <span id="scan-btn-icon">🔍</span>
+                <span id="scan-btn-text">Scan Website Now</span>
+              </button>
+            </form>
+
+            <div id="scan-status-alert" class="scan-alert hidden"></div>
+          </div>
+        </div>
+
+        <!-- Quick Test Fixture Launchers -->
+        <div class="card">
+          <div class="card-header">
+            <h3>Quick Sample Pages to Test</h3>
+            <span class="card-badge">One-Click Detection</span>
+          </div>
+          <p class="section-intro-text">Click any of these pre-configured test cases to instantly see how ClickTrap catches specific manipulative patterns:</p>
+          
+          <div class="sample-pills-grid">
+            <button class="sample-pill-btn" data-url="../test-pages/fake-urgency.html">
+              <span class="pill-badge pill-red">Fake Urgency</span>
+              <strong>Flash Sale with Ticking Timer</strong>
+              <small>Simulates 2-minute deadline pressure</small>
+            </button>
+
+            <button class="sample-pill-btn" data-url="../test-pages/scarcity.html">
+              <span class="pill-badge pill-orange">Scarcity</span>
+              <strong>Hotel Booking Room Alert</strong>
+              <small>"Only 1 room left!" & fake viewers</small>
+            </button>
+
+            <button class="sample-pill-btn" data-url="../test-pages/cookie-consent.html">
+              <span class="pill-badge pill-blue">Cookie Trap</span>
+              <strong>Asymmetric Cookie Banner</strong>
+              <small>Big "Accept All" vs tiny hidden reject</small>
+            </button>
+
+            <button class="sample-pill-btn" data-url="../test-pages/hidden-costs.html">
+              <span class="pill-badge pill-amber">Hidden Costs</span>
+              <strong>Checkout with Drip Pricing</strong>
+              <small>Mandatory late fee added at payment</small>
+            </button>
+
+            <button class="sample-pill-btn" data-url="../test-pages/confirmshaming.html">
+              <span class="pill-badge pill-pink">Confirmshaming</span>
+              <strong>Guilt Opt-Out Newsletter</strong>
+              <small>"No thanks, I don't care about saving"</small>
+            </button>
+
+            <button class="sample-pill-btn" data-url="../test-pages/cancellation-obstacles.html">
+              <span class="pill-badge pill-purple">Cancellation</span>
+              <strong>Roach Motel Subscription</strong>
+              <small>Requires phone calls to cancel</small>
+            </button>
+
+            <button class="sample-pill-btn pill-clean" data-url="../test-pages/normal-marketing.html">
+              <span class="pill-badge pill-green">Clean Site</span>
+              <strong>Ethical Transparent Store</strong>
+              <small>Balanced cookies & upfront price (0 score)</small>
+            </button>
+          </div>
+        </div>
+
+        <!-- HTML / Text Code Paste Drawer -->
+        <div class="card">
+          <div class="card-header">
+            <h3>Or Paste Webpage HTML Code Directly</h3>
+            <button type="button" id="btn-toggle-paste" class="btn btn-secondary btn-sm">
+              Show HTML Paste Box
+            </button>
+          </div>
+          
+          <div id="paste-html-container" class="hidden" style="margin-top: 14px;">
+            <p class="section-intro-text">Paste the raw HTML source of any button, modal, or pricing section you want to inspect:</p>
+            <textarea id="raw-html-input" class="code-textarea" rows="6" placeholder="<div class='flash-sale'><p>Hurry! Offer expires in 2 minutes!</p><div class='timer'>01:59</div></div>"></textarea>
+            <div style="margin-top: 10px; display: flex; justify-content: flex-end;">
+              <button type="button" id="btn-scan-raw-html" class="btn btn-primary">
+                Inspect Pasted HTML
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Page 2: OVERVIEW -->
+      <section id="page-overview" class="view-panel">
+        <!-- 4 Metric Cards with Clear, Self-Explanatory Text -->
+        <div class="stats-grid">
+          <!-- Stat 1: Total Scans -->
+          <div class="stat-card">
+            <div class="stat-icon icon-teal">
+              <span class="stat-glyph">🔍</span>
+            </div>
+            <div class="stat-meta">
+              <span class="stat-label">Total Scans Performed</span>
+              <span id="stat-total-scans" class="stat-value">0</span>
+              <span class="stat-desc">Number of page checks</span>
+            </div>
+          </div>
+
+          <!-- Stat 2: Websites Scanned -->
+          <div class="stat-card">
+            <div class="stat-icon icon-cyan">
+              <span class="stat-glyph">🌐</span>
+            </div>
+            <div class="stat-meta">
+              <span class="stat-label">Websites Inspected</span>
+              <span id="stat-unique-sites" class="stat-value">0</span>
+              <span class="stat-desc">Distinct domains checked</span>
+            </div>
+          </div>
+
+          <!-- Stat 3: Dark Patterns Found -->
+          <div class="stat-card">
+            <div class="stat-icon icon-orange">
+              <span class="stat-glyph">⚠️</span>
+            </div>
+            <div class="stat-meta">
+              <span class="stat-label">Dark Patterns Found</span>
+              <span id="stat-total-findings" class="stat-value">0</span>
+              <span class="stat-desc">Deceptive UI signals flagged</span>
+            </div>
+          </div>
+
+          <!-- Stat 4: Average Risk Score -->
+          <div class="stat-card">
+            <div class="stat-icon icon-purple">
+              <span class="stat-glyph">🛡️</span>
+            </div>
+            <div class="stat-meta">
+              <span class="stat-label">Average Risk Score</span>
+              <span id="stat-avg-score" class="stat-value">0/100</span>
+              <span class="stat-desc">Overall suspicion rating</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 Column Analytics Strip -->
+        <div class="analytics-row">
+          <!-- Category Breakdown -->
+          <div class="card card-flex">
+            <div class="card-header">
+              <h3>Pattern Category Distribution</h3>
+              <span class="card-badge">6 Types</span>
+            </div>
+            <div id="category-bars-container" class="category-bars-list">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Risk Level Breakdown -->
+          <div class="card card-flex">
+            <div class="card-header">
+              <h3>Risk Level Tiers</h3>
+              <span class="card-badge">0-100 Scale</span>
+            </div>
+            <div class="risk-distribution-grid" id="risk-distribution-container">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Scan Activity -->
+        <div class="card">
+          <div class="card-header">
+            <h3>Recent Scan Activity</h3>
+            <button class="link-btn" onclick="document.querySelector('[data-page=history]').click()">View All History &rarr;</button>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Domain</th>
+                  <th>Scanned Date</th>
+                  <th>Suspicion Score</th>
+                  <th>Risk Tier</th>
+                  <th>Findings</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="overview-recent-table-body">
+                <tr><td colspan="6" class="text-center text-muted">No scan history recorded yet. Enter a website URL on the Scan Website tab to start.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Page 3: SCAN REPORT -->
+      <section id="page-report" class="view-panel">
+        <div id="report-empty-state" class="empty-state-card">
+          <div class="empty-icon" style="font-size: 40px;">📋</div>
+          <h3>No Scan Selected</h3>
+          <p>Scan a website from the <strong>Scan Website</strong> tab, or pick an existing scan from <strong>Scan History</strong> to view its forensic report.</p>
+          <button class="btn btn-primary" onclick="document.querySelector('[data-page=scanner]').click()">Go to Scan Website</button>
+        </div>
+
+        <div id="report-active-container" class="report-container hidden">
+          <!-- Report Header Banner -->
+          <div class="report-header-card">
+            <div class="report-meta-left">
+              <button class="back-link-btn" onclick="document.querySelector('[data-page=history]').click()">
+                &larr; Back to History
+              </button>
+              <h2 id="report-domain" class="report-domain-name">example.com</h2>
+              <span id="report-url" class="report-url-sub">https://example.com/checkout</span>
+              <span id="report-timestamp" class="report-timestamp">Scanned recently</span>
+            </div>
+
+            <div class="report-score-box">
+              <div class="report-dial">
+                <span id="report-score-num" class="dial-num">0</span>
+                <span class="dial-denom">/100</span>
+              </div>
+              <div class="report-badge-col">
+                <span id="report-risk-badge" class="badge badge-low">Low Suspicion</span>
+                <span id="report-raw-points" class="raw-points-text">Raw weight: 0 pts</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Report Summary & Categorical Breakdown -->
+          <div class="report-details-grid">
+            <div class="card">
+              <div class="card-header">
+                <h3>Scan Summary</h3>
+              </div>
+              <p id="report-summary-text" class="report-summary-para">No deceptive patterns detected.</p>
+              <div class="disclaimer-callout">
+                <strong>Notice:</strong> ClickTrap scores are informational indicators based on pattern rules. They alert you to potential manipulation tactics, but do not constitute legal determinations of fraud.
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3>Categories Found</h3>
+              </div>
+              <div id="report-category-tags" class="cat-tags-wrap"></div>
+            </div>
+          </div>
+
+          <!-- Itemized Findings Cards -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Detected Evidence Details (<span id="report-findings-count">0</span> Findings)</h3>
+              <button id="btn-print-report" class="btn btn-secondary btn-sm" onclick="window.print()">
+                Print / Save PDF
+              </button>
+            </div>
+            <div id="report-findings-list" class="report-findings-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Page 4: SCAN HISTORY -->
+      <section id="page-history" class="view-panel">
+        <div class="card">
+          <div class="table-controls">
+            <div class="search-input-wrap">
+              <span>🔍</span>
+              <input type="text" id="history-search-input" placeholder="Search by domain, URL, or keywords..." />
+            </div>
+
+            <div class="filter-actions">
+              <select id="history-risk-filter" class="select-control">
+                <option value="all">All Risk Levels</option>
+                <option value="low">Low Suspicion (0-24)</option>
+                <option value="moderate">Moderate Suspicion (25-49)</option>
+                <option value="high">High Suspicion (50-74)</option>
+                <option value="very-high">Very High Suspicion (75-100)</option>
+              </select>
+
+              <button id="btn-export-history" class="btn btn-secondary btn-sm" title="Export as JSON">
+                Export JSON
+              </button>
+              <button id="btn-clear-history-page" class="btn btn-danger-outline btn-sm">
+                Clear All History
+              </button>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Domain / URL</th>
+                  <th>Timestamp</th>
+                  <th>Score</th>
+                  <th>Risk Level</th>
+                  <th>Findings Count</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="history-table-body">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Page 5: LEARN ABOUT DARK PATTERNS -->
+      <section id="page-learn" class="view-panel">
+        <div class="learn-hero">
+          <h2>Dark Pattern Education Handbook</h2>
+          <p>Learn what dark patterns are, why companies use them, and how to recognize and avoid them.</p>
+        </div>
+
+        <div class="edu-grid" id="edu-cards-container">
+          <!-- Dynamically populated from rules.js educational data -->
+        </div>
+
+        <!-- Interactive Defense Quiz -->
+        <div class="card quiz-card">
+          <div class="card-header">
+            <h3>Quick Knowledge Check: Spot the Deceptive Design</h3>
+            <span class="card-badge">Skill Test</span>
+          </div>
+          <div id="quiz-container" class="quiz-content">
+            <p id="quiz-question" class="quiz-question-text">Loading question...</p>
+            <div id="quiz-options" class="quiz-options-list"></div>
+            <div id="quiz-feedback" class="quiz-feedback-box hidden"></div>
+            <button id="btn-next-quiz" class="btn btn-secondary btn-sm hidden">Next Question &rarr;</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Page 6: SETTINGS & PRIVACY -->
+      <section id="page-settings" class="view-panel">
+        <div class="card" style="max-width: 800px; margin: 0 auto 24px;">
+          <div class="card-header">
+            <h3>ClickTrap Preferences</h3>
+          </div>
+          <div class="settings-form">
+            <div class="setting-row">
+              <div class="setting-desc-col">
+                <strong>On-Page Highlighting</strong>
+                <p>When using the extension, highlight deceptive elements directly on the webpage.</p>
+              </div>
+              <input type="checkbox" id="dash-pref-highlight" class="toggle-checkbox" checked />
+            </div>
+
+            <div class="setting-row">
+              <div class="setting-desc-col">
+                <strong>Local History Storage</strong>
+                <p>Save scan records in your local browser storage so you can review them later.</p>
+              </div>
+              <input type="checkbox" id="dash-pref-history" class="toggle-checkbox" checked />
+            </div>
+
+            <div class="setting-row">
+              <div class="setting-desc-col">
+                <strong>Clear All Local Data</strong>
+                <p>Deletes all saved scan history and preferences from this device.</p>
+              </div>
+              <button id="btn-dash-clear-data" class="btn btn-danger-outline btn-sm">
+                Clear Saved Data
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="max-width: 800px; margin: 0 auto 24px;">
+          <div class="card-header">
+            <h3>Privacy Policy</h3>
+            <span class="badge badge-low">100% Local</span>
+          </div>
+          <div class="privacy-manifesto">
+            <p>ClickTrap operates strictly on your computer. Webpage content is analyzed locally in memory and is <strong>never</strong> transmitted to external cloud servers, advertisers, or analytics tracking services.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- How to Scan Modal -->
+  <div id="guide-modal" class="modal-backdrop hidden">
+    <div class="modal-window">
+      <div class="modal-head">
+        <h3>How to Use ClickTrap</h3>
+        <button id="btn-close-guide" class="icon-btn-sm">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="guide-step">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <strong>Scan Directly on the Web:</strong> Enter any website address in the top bar on the "Scan Website" tab and click "Scan Website Now".
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <strong>Or Use the Chrome Extension:</strong> Install the extension in Chrome, browse any site, and click the ClickTrap shield icon in your browser toolbar to scan the active tab.
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <strong>Inspect Deceptive Patterns:</strong> Review the risk score (0-100), view exact quote excerpts, and read consumer advice on how to protect your money and data.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared Rules & Engine Scripts -->
+  <script src="../rules.js"></script>
+  <script src="../detector.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

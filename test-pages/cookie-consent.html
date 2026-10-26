@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GlobalNews Portal – Privacy Notice (Synthetic Test)</title>
+  <link rel="stylesheet" href="test-styles.css">
+</head>
+<body>
+  <div class="synthetic-banner">
+    <div>⚠️ <strong>SYNTHETIC TEST FIXTURE:</strong> Cookie Consent Manipulation & Asymmetric Choices</div>
+    <a href="index.html">&larr; Back to Test Hub</a>
+  </div>
+
+  <div class="fixture-container">
+    <div class="fixture-card">
+      <h2>Global Technology & Financial Daily</h2>
+      <p style="color: #64748B; margin-top: 6px;">Daily independent journalism, market trends, and investigative reporting.</p>
+      <hr style="margin: 20px 0; border: none; border-top: 1px solid #E2E8F0;">
+      <article>
+        <h3>AI Regulation Bill Passes Historic Vote</h3>
+        <p style="margin-top: 10px; color: #475569;">
+          Lawmakers across multiple jurisdictions today voted overwhelmingly to enact new consumer data transparency standards, 
+          strictly penalizing deceptive interface designs, manipulative consent dialogues, and unauthorized behavioral tracking.
+        </p>
+      </article>
+    </div>
+  </div>
+
+  <!-- Deceptive Cookie Banner (Visual Asymmetry & Pre-Selected Checkboxes) -->
+  <div class="cookie-banner" id="cookie-banner">
+    <div class="cookie-text">
+      <h4 style="margin-bottom: 6px; font-size: 16px;">We Value Your Browsing Privacy</h4>
+      <p style="font-size: 13px; color: #CBD5E1;">
+        We and our 428 third-party ad partners store cookies on your device. I accept for the best experience and personalized advertising.
+      </p>
+      
+      <!-- Pre-checked tracking preference -->
+      <div style="margin-top: 10px; font-size: 12px; color: #94A3B8;">
+        <label for="track-cb">
+          <input type="checkbox" id="track-cb" checked /> Marketing and Behavioral Profiling Tracking
+        </label>
+      </div>
+    </div>
+
+    <!-- Asymmetry: Massive green Accept button vs tiny gray link for reject -->
+    <div class="cookie-actions">
+      <a href="#" class="link-secondary" onclick="alert('Demoted reject clicked'); return false;">
+        Manage Options
+      </a>
+      <button class="btn btn-success" style="padding: 12px 28px; font-size: 15px; font-weight: 700;" onclick="document.getElementById('cookie-banner').style.display='none'">
+        Accept All Cookies
+      </button>
+    </div>
+  </div>
+</body>
+</html>

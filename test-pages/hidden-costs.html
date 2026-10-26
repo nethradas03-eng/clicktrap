@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Express Tickets – Checkout Summary (Synthetic Test)</title>
+  <link rel="stylesheet" href="test-styles.css">
+</head>
+<body>
+  <div class="synthetic-banner">
+    <div>⚠️ <strong>SYNTHETIC TEST FIXTURE:</strong> Hidden & Late-Disclosed Costs (Drip Pricing)</div>
+    <a href="index.html">&larr; Back to Test Hub</a>
+  </div>
+
+  <div class="fixture-container">
+    <div class="fixture-card">
+      <h2>Order Review & Final Payment</h2>
+      <p style="color: #64748B;">Concert Ticket: Neon Horizons World Tour</p>
+
+      <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 18px; margin: 20px 0;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+          <span>General Admission Ticket (Advertised price)</span>
+          <span style="font-weight: 600;">$45.00</span>
+        </div>
+
+        <!-- Late-stage mandatory fee -->
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px; color: #DC2626;">
+          <span>Mandatory service fee added at checkout</span>
+          <span style="font-weight: 600;">$14.50</span>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px; color: #DC2626;">
+          <span>Cleaning fee: $8.00</span>
+          <span style="font-weight: 600;">$8.00</span>
+        </div>
+
+        <!-- Pre-selected paid add-on -->
+        <div style="background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 6px; padding: 12px; margin: 14px 0;">
+          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: #1E40AF; font-size: 13px;">
+            <input type="checkbox" checked />
+            <strong>Add Ticket Damage Protection Warranty for $5.99</strong>
+          </label>
+          <p style="font-size: 11px; color: #64748B; margin-left: 24px; margin-top: 4px;">
+            Covers lost or damaged digital credentials. Automatically selected for your protection.
+          </p>
+        </div>
+
+        <!-- Ambiguous recurring clause -->
+        <p style="font-size: 12px; color: #64748B; margin-top: 10px;">
+          * VIP club membership renews automatically at $19 per month after trial.
+        </p>
+
+        <hr style="margin: 16px 0; border: none; border-top: 2px dashed #CBD5E1;">
+
+        <div style="display: flex; justify-content: space-between; font-size: 18px; font-weight: 800;">
+          <span>Total Charged to Card</span>
+          <span style="color: #0F172A;">$73.49</span>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 16px;">
+        Complete Order ($73.49)
+      </button>
+    </div>
+  </div>
+</body>
+</html>

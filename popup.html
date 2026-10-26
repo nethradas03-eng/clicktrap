@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClickTrap – Dark Pattern Detector</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Top Header -->
+    <header class="app-header">
+      <div class="brand">
+        <img src="icons/icon32.png" alt="ClickTrap Logo" class="brand-logo" />
+        <div class="brand-text">
+          <span class="brand-name">ClickTrap</span>
+          <span class="brand-tagline">Dark Pattern Detector</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="btn-open-dashboard" class="icon-btn" title="Open Full Security Dashboard" aria-label="Open Dashboard">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M3 9h18M9 21V9"/>
+          </svg>
+        </button>
+        <button id="btn-toggle-settings" class="icon-btn" title="Settings & Privacy" aria-label="Settings">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Target Domain Card -->
+    <div class="domain-strip">
+      <div class="domain-info">
+        <span class="pulse-dot"></span>
+        <span id="current-domain" class="domain-name">Inspecting active tab...</span>
+      </div>
+      <span id="scan-status-pill" class="status-pill ready">Ready</span>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- State 1: Ready to Scan View -->
+      <section id="view-initial" class="view-state">
+        <div class="hero-graphic">
+          <div class="radar-circle">
+            <svg class="radar-svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#35D6C2" stroke-width="1.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <circle cx="12" cy="11" r="3"/>
+            </svg>
+          </div>
+        </div>
+        <h2 class="view-title">Analyze Webpage Interface</h2>
+        <p class="view-desc">Inspect visible text, countdowns, buttons, cookie choices, and pricing structure for deceptive patterns.</p>
+        <button id="btn-start-scan" class="btn btn-primary btn-block">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          Scan Webpage Now
+        </button>
+      </section>
+
+      <!-- State 2: Scanning Loading View -->
+      <section id="view-loading" class="view-state hidden">
+        <div class="scanner-anim-container">
+          <div class="scanner-sweep"></div>
+          <img src="icons/icon48.png" alt="Scanning" class="scanner-logo" />
+        </div>
+        <h2 class="view-title">Analyzing Page Elements...</h2>
+        <p class="view-desc">Evaluating urgency timers, cookie asymmetric options, hidden fees, and manipulative language.</p>
+      </section>
+
+      <!-- State 3: Results View -->
+      <section id="view-results" class="view-state hidden">
+        <!-- Suspicion Score Summary Card -->
+        <div class="score-card">
+          <div class="score-left">
+            <div class="gauge-wrap">
+              <svg class="gauge-svg" width="68" height="68" viewBox="0 0 36 36">
+                <path class="gauge-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                <path id="gauge-fill" class="gauge-fill" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+              </svg>
+              <div class="gauge-text">
+                <span id="score-number" class="score-number">0</span>
+                <span class="score-label">/100</span>
+              </div>
+            </div>
+          </div>
+          <div class="score-right">
+            <div class="risk-meta">
+              <span class="risk-title">Suspicion Index</span>
+              <span id="risk-badge" class="badge badge-low">Low Suspicion</span>
+            </div>
+            <p id="findings-summary" class="summary-text">No deceptive patterns detected.</p>
+          </div>
+        </div>
+
+        <!-- Action Controls Bar -->
+        <div class="action-bar">
+          <button id="btn-toggle-highlight" class="btn btn-outline btn-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+            <span id="btn-highlight-text">Highlight on Page</span>
+          </button>
+          <div class="secondary-actions">
+            <button id="btn-rescan" class="icon-btn-sm" title="Re-scan Page">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+              </svg>
+            </button>
+            <button id="btn-clear-scan" class="icon-btn-sm" title="Clear Scan">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Findings List -->
+        <div class="findings-container">
+          <div class="findings-header">
+            <span class="section-title">Detected Findings (<span id="findings-count">0</span>)</span>
+            <span class="disclaimer-chip">Potential Patterns</span>
+          </div>
+
+          <!-- Clean state when zero findings -->
+          <div id="findings-clean" class="clean-state hidden">
+            <div class="clean-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#35D6C2" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <h4>Clean Layout Verified</h4>
+            <p>No manipulative urgency, consent traps, or confirmshaming signals were observed on this page.</p>
+          </div>
+
+          <!-- Finding Cards List -->
+          <div id="findings-list" class="findings-list"></div>
+        </div>
+      </section>
+
+      <!-- State 4: Restricted / Error View -->
+      <section id="view-restricted" class="view-state hidden">
+        <div class="restricted-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#F59F00" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <h3 id="restricted-title">Browser Protected Page</h3>
+        <p id="restricted-desc">For security reasons, Chrome extensions cannot inspect internal browser tabs (chrome://, edge://, Chrome Web Store, or system files).</p>
+        <button id="btn-test-page" class="btn btn-secondary btn-block">Open Synthetic Test Fixtures</button>
+      </section>
+
+      <!-- Settings Panel (Slide-In View) -->
+      <section id="view-settings" class="settings-drawer hidden">
+        <div class="drawer-header">
+          <h3>Preferences & Privacy</h3>
+          <button id="btn-close-settings" class="icon-btn-sm" aria-label="Close settings">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+        <div class="drawer-body">
+          <div class="setting-item">
+            <div class="setting-meta">
+              <label class="setting-title" for="toggle-highlight-pref">Evidence Highlighting</label>
+              <span class="setting-desc">Highlight deceptive elements directly in the webpage.</span>
+            </div>
+            <input type="checkbox" id="toggle-highlight-pref" class="toggle-checkbox" checked />
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-meta">
+              <label class="setting-title" for="toggle-history-pref">Local Scan History</label>
+              <span class="setting-desc">Store past scans locally in your browser storage.</span>
+            </div>
+            <input type="checkbox" id="toggle-history-pref" class="toggle-checkbox" checked />
+          </div>
+
+          <div class="privacy-box">
+            <h4>Privacy Transparency</h4>
+            <p>ClickTrap operates strictly local-first. Webpage text is analyzed in memory and is <strong>never</strong> transmitted to external servers or cloud services.</p>
+          </div>
+
+          <button id="btn-clear-all-history" class="btn btn-danger-outline btn-block">
+            Clear Local Scan History
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <span class="tagline">See the pattern. Protect your choice.</span>
+      <a href="#" id="link-footer-dashboard">Full Dashboard &rarr;</a>
+    </footer>
+  </div>
+
+  <script src="rules.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

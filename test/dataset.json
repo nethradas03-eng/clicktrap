@@ -1,0 +1,247 @@
+[
+  {
+    "id": "TC-FU-01",
+    "category": "fake_urgency",
+    "isDarkPattern": true,
+    "input": "<div class=\"flash-sale\"><p>Hurry! Offer expires in 2 minutes!</p><div class=\"timer\">01:59</div></div>",
+    "description": "Short expiration countdown on e-commerce deal"
+  },
+  {
+    "id": "TC-FU-02",
+    "category": "fake_urgency",
+    "isDarkPattern": true,
+    "input": "<button class=\"cta\">Buy now before the timer ends!</button>",
+    "description": "Urgency pressure on CTA button"
+  },
+  {
+    "id": "TC-FU-03",
+    "category": "fake_urgency",
+    "isDarkPattern": true,
+    "input": "<p class=\"alert\">Last chance to purchase! Flash sale ends soon</p>",
+    "description": "Last chance warning"
+  },
+  {
+    "id": "TC-FU-04",
+    "category": "fake_urgency",
+    "isDarkPattern": true,
+    "input": "<div class=\"banner\"><span>Prices increase in 10 minutes</span></div>",
+    "description": "Price increase artificial deadline"
+  },
+  {
+    "id": "TC-FU-05",
+    "category": "fake_urgency",
+    "isDarkPattern": true,
+    "input": "<p>Act fast or lose this limited time deal! Time is running out!</p>",
+    "description": "Adrenaline pressure callout"
+  },
+  {
+    "id": "TC-SM-01",
+    "category": "scarcity_manipulation",
+    "isDarkPattern": true,
+    "input": "<div class=\"stock-badge\"><span class=\"warning\">Only 1 item left in stock!</span></div>",
+    "description": "Extreme low stock pressure"
+  },
+  {
+    "id": "TC-SM-02",
+    "category": "scarcity_manipulation",
+    "isDarkPattern": true,
+    "input": "<p class=\"hotel-alert\">Only 2 rooms remaining at this price!</p>",
+    "description": "Hotel scarcity notice"
+  },
+  {
+    "id": "TC-SM-03",
+    "category": "scarcity_manipulation",
+    "isDarkPattern": true,
+    "input": "<span class=\"fomo\">18 people are viewing this right now</span>",
+    "description": "Artificial real-time viewer count"
+  },
+  {
+    "id": "TC-SM-04",
+    "category": "scarcity_manipulation",
+    "isDarkPattern": true,
+    "input": "<div class=\"booked-alert\">Booked 8 times in the last hour! Almost sold out!</div>",
+    "description": "Booking velocity notification"
+  },
+  {
+    "id": "TC-SM-05",
+    "category": "scarcity_manipulation",
+    "isDarkPattern": true,
+    "input": "<p>Limited stock remaining - popular choice: 12 others have in cart!</p>",
+    "description": "Cart competition FOMO"
+  },
+  {
+    "id": "TC-CC-01",
+    "category": "cookie_consent",
+    "isDarkPattern": true,
+    "input": "<div class=\"cookie-banner\"><p>We value your privacy</p><button class=\"btn-accept primary\">Accept All</button><a href=\"#\" class=\"link-reject\">Reject</a></div>",
+    "description": "Asymmetric consent buttons: big button vs plain link"
+  },
+  {
+    "id": "TC-CC-02",
+    "category": "cookie_consent",
+    "isDarkPattern": true,
+    "input": "<div id=\"cookie-consent\" class=\"consent-dialog\"><p>This website uses cookies</p><button class=\"btn\">Accept All</button></div>",
+    "description": "Cookie banner with accept button and zero reject option"
+  },
+  {
+    "id": "TC-CC-03",
+    "category": "cookie_consent",
+    "isDarkPattern": true,
+    "input": "<div class=\"cookie-modal\"><label for=\"cb1\"><input type=\"checkbox\" id=\"cb1\" checked /> Marketing and Behavioral Profiling</label></div>",
+    "description": "Pre-selected marketing tracking checkbox"
+  },
+  {
+    "id": "TC-CC-04",
+    "category": "cookie_consent",
+    "isDarkPattern": true,
+    "input": "<div class=\"cookie-bar\"><p>I accept for the best experience and personalized ads</p><button>Agree</button></div>",
+    "description": "Deceptive cookie framing implying degradation"
+  },
+  {
+    "id": "TC-HC-01",
+    "category": "hidden_costs",
+    "isDarkPattern": true,
+    "input": "<div class=\"summary\"><p>Item Total: $45.00</p><p class=\"extra\">Mandatory service fee added at checkout: $12.50</p></div>",
+    "description": "Mandatory late service fee disclosed at final step"
+  },
+  {
+    "id": "TC-HC-02",
+    "category": "hidden_costs",
+    "isDarkPattern": true,
+    "input": "<div class=\"cart-line\"><label><input type=\"checkbox\" checked /> Add Damage Protection Warranty for $4.99</label></div>",
+    "description": "Pre-selected paid insurance add-on"
+  },
+  {
+    "id": "TC-HC-03",
+    "category": "hidden_costs",
+    "isDarkPattern": true,
+    "input": "<div class=\"hotel-fees\"><p>Extra charge of $35 resort fee added per night</p></div>",
+    "description": "Undisclosed mandatory resort surcharge"
+  },
+  {
+    "id": "TC-HC-04",
+    "category": "hidden_costs",
+    "isDarkPattern": true,
+    "input": "<p class=\"fineprint\">Renews automatically at $79 per year after 7-day trial</p>",
+    "description": "Sneak trial recurring renewal clause"
+  },
+  {
+    "id": "TC-CS-01",
+    "category": "confirmshaming",
+    "isDarkPattern": true,
+    "input": "<div class=\"newsletter-modal\"><button class=\"accept\">Claim 20% Off</button><button class=\"decline\">No thanks, I don't care about saving money</button></div>",
+    "description": "Classic guilt-inducing discount opt-out"
+  },
+  {
+    "id": "TC-CS-02",
+    "category": "confirmshaming",
+    "isDarkPattern": true,
+    "input": "<a href=\"#\" class=\"optout\">No, I prefer paying full price</a>",
+    "description": "Full price shaming decline link"
+  },
+  {
+    "id": "TC-CS-03",
+    "category": "confirmshaming",
+    "isDarkPattern": true,
+    "input": "<button class=\"skip-btn\">I prefer to miss out on exclusive deals</button>",
+    "description": "FOMO-shaming button"
+  },
+  {
+    "id": "TC-CS-04",
+    "category": "confirmshaming",
+    "isDarkPattern": true,
+    "input": "<label><input type=\"checkbox\" /> Uncheck this box if you do not wish to receive daily promotional emails</label>",
+    "description": "Deceptive double negative checkbox"
+  },
+  {
+    "id": "TC-OC-01",
+    "category": "obstructive_cancellation",
+    "isDarkPattern": true,
+    "input": "<div class=\"account-settings\"><p>To cancel, please call our 1-800 support line between 9am - 10am EST</p></div>",
+    "description": "Phone-only restrictive cancellation window (Roach Motel)"
+  },
+  {
+    "id": "TC-OC-02",
+    "category": "obstructive_cancellation",
+    "isDarkPattern": true,
+    "input": "<p class=\"terms\">Cancellation requires mailing a written letter via postal service</p>",
+    "description": "Physical mail requirement to cancel digital service"
+  },
+  {
+    "id": "TC-OC-03",
+    "category": "obstructive_cancellation",
+    "isDarkPattern": true,
+    "input": "<div class=\"churn-modal\"><p>Are you sure? You will lose all your benefits and saved data forever!</p><button>Keep Plan</button></div>",
+    "description": "Excessive retention fear and guilt friction"
+  },
+  {
+    "id": "TC-BENIGN-01",
+    "category": "benign",
+    "isDarkPattern": false,
+    "input": "<div class=\"hero\"><p>Welcome to our tech store. Free standard shipping on orders over $50.</p></div>",
+    "description": "Standard legitimate e-commerce shipping threshold"
+  },
+  {
+    "id": "TC-BENIGN-02",
+    "category": "benign",
+    "isDarkPattern": false,
+    "input": "<nav><a href=\"/products\">Browse Catalog</a><a href=\"/contact\">Customer Service</a></nav>",
+    "description": "Ordinary website navigation menu"
+  },
+  {
+    "id": "TC-BENIGN-03",
+    "category": "benign",
+    "isDarkPattern": false,
+    "input": "<div class=\"cookie-consent\"><p>We use essential cookies to keep our service running.</p><button>Accept All</button><button>Reject All</button></div>",
+    "description": "Balanced, symmetric cookie consent dialog"
+  },
+  {
+    "id": "TC-BENIGN-04",
+    "category": "benign",
+    "isDarkPattern": false,
+    "input": "<div class=\"settings\"><p>You can cancel your subscription at any time with one click from your account dashboard.</p><button>Cancel Plan</button></div>",
+    "description": "Frictionless transparent subscription cancellation"
+  },
+  {
+    "id": "TC-BENIGN-05",
+    "category": "benign",
+    "isDarkPattern": false,
+    "input": "<form><label>Subscribe to our quarterly research newsletter</label><input type=\"email\" placeholder=\"Your email\" /><button>Subscribe</button><a href=\"#\">No thanks</a></form>",
+    "description": "Neutral, polite newsletter opt-out without shame"
+  },
+  {
+    "id": "TC-BENIGN-06",
+    "category": "benign",
+    "isDarkPattern": false,
+    "input": "<div class=\"checkout-total\"><p>Subtotal: $29.99</p><p>Standard Estimated Shipping: $4.99</p><h3>Total: $34.98</h3></div>",
+    "description": "Clean upfront transparent pricing breakdown"
+  },
+  {
+    "id": "TC-BENIGN-07",
+    "category": "benign",
+    "isDarkPattern": false,
+    "input": "<div class=\"product-info\"><h1>Ergonomic Mechanical Keyboard</h1><p>Solid aluminum frame with custom switches. Available in black or white.</p></div>",
+    "description": "Ordinary neutral product specification"
+  },
+  {
+    "id": "TC-BENIGN-08",
+    "category": "benign",
+    "isDarkPattern": false,
+    "input": "<footer class=\"footer\"><p>&copy; 2026 ClickTrap Security. All rights reserved. <a href=\"/privacy\">Privacy Policy</a></p></footer>",
+    "description": "Standard footer with privacy link"
+  },
+  {
+    "id": "TC-BENIGN-09",
+    "category": "benign",
+    "isDarkPattern": false,
+    "input": "<div class=\"faq\"><summary>How do refunds work?</summary><p>We offer a hassle-free 30-day money-back guarantee for all customers.</p></div>",
+    "description": "Ethical money-back guarantee policy"
+  },
+  {
+    "id": "TC-BENIGN-10",
+    "category": "benign",
+    "isDarkPattern": false,
+    "input": "<div class=\"blog-post\"><h2>10 Best Practices for Cybersecurity in 2026</h2><p>Learn how to secure your browser and protect user privacy effectively.</p></div>",
+    "description": "Educational blog content without sales pressure"
+  }
+]

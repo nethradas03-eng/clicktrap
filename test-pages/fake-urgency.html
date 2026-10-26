@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlashSale Direct – Mega Discount (Synthetic Test)</title>
+  <link rel="stylesheet" href="test-styles.css">
+</head>
+<body>
+  <div class="synthetic-banner">
+    <div>⚠️ <strong>SYNTHETIC TEST FIXTURE:</strong> Fake Urgency & Countdown Timer</div>
+    <a href="index.html">&larr; Back to Test Hub</a>
+  </div>
+
+  <div class="fixture-container">
+    <div class="fixture-card">
+      <div class="countdown-box">
+        <h3 style="color: #DC2626; margin-bottom: 6px;">⚡ FLASH SALE ENDS SOON! ⚡</h3>
+        <p>Offer expires in 2 minutes! Prices increase in 10 minutes!</p>
+        <div class="timer" id="demo-timer">01:58</div>
+        <p style="font-size: 12px; color: #64748B; margin-top: 6px;">Buy now before the timer ends!</p>
+      </div>
+
+      <div style="display: flex; gap: 24px; align-items: center; margin-top: 20px;">
+        <div style="width: 200px; height: 160px; background: #E2E8F0; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 40px;">
+          🎧
+        </div>
+        <div>
+          <h2>AcousticPro Noise-Canceling Headphones</h2>
+          <p style="color: #64748B; margin: 6px 0;">Ultra-bass, 40hr battery life, wireless bluetooth 5.3.</p>
+          <div style="margin: 12px 0;">
+            <span style="font-size: 24px; font-weight: 800; color: #16A34A;">$49.99</span>
+            <span style="text-decoration: line-through; color: #94A3B8; margin-left: 8px;">$199.99</span>
+            <span style="background: #FEE2E2; color: #DC2626; padding: 2px 6px; border-radius: 4px; font-size: 12px; font-weight: 700; margin-left: 8px;">75% OFF</span>
+          </div>
+          <p style="color: #DC2626; font-weight: 600; margin-bottom: 14px;">Last chance to purchase! Time is running out!</p>
+          <button class="btn btn-danger" style="padding: 12px 28px; font-size: 16px;">
+            Claim Deal Now (Before Timer Ends)
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Live ticking countdown simulation
+    let secondsLeft = 118;
+    const timerEl = document.getElementById('demo-timer');
+    setInterval(() => {
+      if (secondsLeft > 0) secondsLeft--;
+      else secondsLeft = 120; // reset loop (classic dark pattern behavior!)
+      const m = String(Math.floor(secondsLeft / 60)).padStart(2, '0');
+      const s = String(secondsLeft % 60).padStart(2, '0');
+      timerEl.textContent = `${m}:${s}`;
+    }, 1000);
+  </script>
+</body>
+</html>

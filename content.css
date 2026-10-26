@@ -1,0 +1,83 @@
+/**
+ * ClickTrap - Highlighting & Element Badges CSS
+ * Clean, reversible DOM overlay styling for suspicious UI patterns
+ */
+
+.clicktrap-highlighted {
+  position: relative !important;
+  outline: 2px dashed #FF6B6B !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 12px rgba(255, 107, 107, 0.35) !important;
+  transition: outline 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.clicktrap-highlighted[data-clicktrap-severity="high"],
+.clicktrap-highlighted[data-clicktrap-severity="critical"] {
+  outline-color: #FF6B6B !important;
+  box-shadow: 0 0 14px rgba(255, 107, 107, 0.45) !important;
+}
+
+.clicktrap-highlighted[data-clicktrap-severity="medium"] {
+  outline-color: #FFA94D !important;
+  box-shadow: 0 0 10px rgba(255, 169, 77, 0.35) !important;
+}
+
+.clicktrap-highlighted[data-clicktrap-severity="low"] {
+  outline-color: #35D6C2 !important;
+  box-shadow: 0 0 8px rgba(53, 214, 194, 0.3) !important;
+}
+
+/* Floating ClickTrap Category Badge */
+.clicktrap-badge {
+  position: absolute !important;
+  top: -12px !important;
+  right: 8px !important;
+  z-index: 2147483647 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  padding: 2px 8px !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.3px !important;
+  text-transform: uppercase !important;
+  color: #FFFFFF !important;
+  background: #0B1020 !important;
+  border: 1px solid #FF6B6B !important;
+  border-radius: 12px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6) !important;
+  cursor: help !important;
+  pointer-events: auto !important;
+  user-select: none !important;
+}
+
+.clicktrap-badge-dot {
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background-color: #FF6B6B !important;
+  box-shadow: 0 0 6px #FF6B6B !important;
+}
+
+/* Tooltip on Badge Hover */
+.clicktrap-badge:hover::after {
+  content: attr(data-tooltip) !important;
+  position: absolute !important;
+  bottom: calc(100% + 6px) !important;
+  right: 0 !important;
+  width: 260px !important;
+  padding: 8px 10px !important;
+  background: #121A2B !important;
+  color: #F4F7FB !important;
+  border: 1px solid #1E2D4A !important;
+  border-radius: 6px !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  line-height: 1.4 !important;
+  text-transform: none !important;
+  white-space: normal !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7) !important;
+  z-index: 2147483647 !important;
+  pointer-events: none !important;
+}
