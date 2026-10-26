@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ClickTrap – Dark Pattern Detector & Web Scanner
 
 > *"See the pattern. Protect your choice."*
@@ -99,3 +100,7 @@ Expected output:
 ## 6. License
 
 MIT License. See [package.json](package.json) for details.
+=======
+# clicktrap
+A Chrome extension that detects dark patterns like fake urgency, scarcity, and hidden costs on websites, and gives each page a suspicion score.
+>>>>>>> 0825bc8342057a049349330db2ae8cf31246af0f
